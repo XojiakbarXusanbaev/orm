@@ -27,9 +27,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Test
-      run: |
-        pip install pytest
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+    - run: |
+        pip install -r requirements.txt pytest
         pytest -v
       env:
         DATABASE_URL: postgresql://postgres:1234@localhost:5432/test_api
