@@ -39,13 +39,18 @@ jobs:
         pip install -r requirements.txt
         pip install black flake8 pytest
 
+    - name: Check code formatting
+      run: |
+        black . --check
+        flake8 .
+
     - name: Run tests
       env:
-        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_api
+        DATABASE_URL: postgresql://postgres:1234@localhost:5432/test_api
         DB_USER: postgres
         DB_PASSWORD: 1234
         DB_HOST: localhost
         DB_PORT: 5432
         DB_NAME: test_api
       run: |
-        pytest -v
+        python -m pytest tests/ -v
