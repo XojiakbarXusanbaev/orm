@@ -15,8 +15,8 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test_db
+          POSTGRES_PASSWORD: 1234
+          POSTGRES_DB: test_api
         ports:
           - 5432:5432
         options: >-
@@ -41,11 +41,11 @@ jobs:
 
     - name: Run tests
       env:
-        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_db
+        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/test_api
         DB_USER: postgres
-        DB_PASSWORD: postgres
+        DB_PASSWORD: 1234
         DB_HOST: localhost
         DB_PORT: 5432
-        DB_NAME: test_db
+        DB_NAME: test_api
       run: |
         pytest -v
