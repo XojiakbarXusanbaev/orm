@@ -23,8 +23,8 @@ async def startup():
 
 
 
-@app.get("/behruz")
-async def behruz():
+@app.get("/test")
+async def test():
     return {"message": "Hello World"}
 
 
